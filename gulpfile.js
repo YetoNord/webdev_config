@@ -1,4 +1,3 @@
-
 var gulp = require('gulp');
 var sass = require('gulp-sass'); // https://www.npmjs.com/package/gulp-ruby-sass
 var uglify = require('gulp-uglify'); // https://www.npmjs.com/package/gulp-uglify
@@ -47,7 +46,7 @@ gulp.task('index', function () {
     .pipe(injectpartials())
     .pipe(htmltidy({hideComments: true,
                     indent: true}))
-    .pipe(gulp.dest('dest.html'))
+    .pipe(gulp.dest('./dest-html'))
     .pipe(browserSync.stream());
 });
 
