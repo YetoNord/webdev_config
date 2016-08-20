@@ -8,7 +8,6 @@ var htmltidy = require('gulp-htmltidy'); // https://www.npmjs.com/package/gulp-h
 var browserSync = require('browser-sync').create();
 var bourbon = require('node-bourbon'); //https://www.npmjs.com/package/node-bourbon
 
-
 gulp.task('server', function() {
     browserSync.init({
         server: {
@@ -20,22 +19,16 @@ gulp.task('server', function() {
     gulp.watch('scss/**/*.sass', ['sass']);
     gulp.watch('*.html', ['index']);
     gulp.watch('p/*.html', ['index']);
-
-
 });
 
-
-
-// gulp-uglify
 gulp.task('scripts', function() {
     gulp.src('js/*.js')
-        .pipe(uglify())
-        .on('error', sass.logError)
-        .pipe(gulp.dest('minjs'))
-        .pipe(browserSync.stream());
+    .pipe(uglify())
+    .on('error', sass.logError)
+    .pipe(gulp.dest('minjs'))
+    .pipe(browserSync.stream());
 });
 
-// gulp-ruby-sass
 gulp.task('sass', function () {
     gulp.src('scss/**/*.sass')
     .pipe(sass({
@@ -48,22 +41,16 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 });
 
-
-
 gulp.task('index', function () {
-        gulp.src(['*.html', 'p/*.html'])
-        .on('error', sass.logError)
-        .pipe(injectpartials())
-        .pipe(htmltidy({hideComments: true,
-                        indent: true}))
-        .pipe(gulp.dest('src/'))
-        .pipe(browserSync.stream());
-
+    gulp.src(['*.html', 'p/*.html'])
+    .on('error', sass.logError)
+    .pipe(injectpartials())
+    .pipe(htmltidy({hideComments: true,
+                    indent: true}))
+    .pipe(gulp.dest('src/'))
+    .pipe(browserSync.stream());
 });
 
-
-
-// Watch
 gulp.task('watch', function() {
     gulp.watch('js/*.js', ['scripts']);
     gulp.watch('scss/**/*.sass', ['sass']);
@@ -71,16 +58,4 @@ gulp.task('watch', function() {
     gulp.watch('p/*.html', ['index']);
 });
 
-
-
-
-gulp.task('default', ['scripts', 'sass', 'index', 'watch']); // ['scripts', 'andre']
-
-
-
-/*
-
-
-npm install --save-dev -gulp-uglify
-
-*/
+gulp.task('default', ['scripts', 'sass', 'index', 'watch']);
