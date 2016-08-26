@@ -45,8 +45,8 @@ gulp.task('index', function () {
     gulp.src(['*.html', 'p/*.html'])
     .on('error', sass.logError)
     .pipe(injectpartials())
-    .pipe(htmltidy({hideComments: true,
-                    indent: true}))
+    //.pipe(htmltidy({hideComments: true,
+    //                indent: true}))
     .pipe(gulp.dest('dest-html'))
     .pipe(browserSync.stream());
 });
