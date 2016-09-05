@@ -6,6 +6,7 @@ var injectpartials = require('gulp-inject-partials'); // https://www.npmjs.com/p
 var htmltidy = require('gulp-htmltidy'); // https://www.npmjs.com/package/gulp-htmltidy
 var browserSync = require('browser-sync').create();
 var bourbon = require('node-bourbon'); //https://www.npmjs.com/package/node-bourbon
+var replace = require('gulp-replace'); //https://www.npmjs.com/package/gulp-replace
 
 gulp.task('server', function() {
     browserSync.init({
@@ -37,6 +38,7 @@ gulp.task('sass', function () {
           quiet: true
         })).on('error', sass.logError)
     .pipe(autoprefixer('last 2 versions'))
+    //.pipe(replace('../dest-gfx/', '/filarkiv/grafikk/'))
     .pipe(gulp.dest('dest-css'))
     .pipe(browserSync.stream());
 });
@@ -47,6 +49,7 @@ gulp.task('index', function () {
     .pipe(injectpartials())
     //.pipe(htmltidy({hideComments: true,
     //                indent: true}))
+    //.pipe(replace('../dest-gfx/', '/filarkiv/grafikk/'))
     .pipe(gulp.dest('dest-html'))
     .pipe(browserSync.stream());
 });
