@@ -1,14 +1,14 @@
 @mixin responsiv($breakpoint) {
   @if $breakpoint == "mobil" {
-    @media (min-width: 500px) {
+    @media (max-width: 500px) {
       @content;
     }
   } @else if $breakpoint == "nettbrett" {
-    @media (min-width: 800px) {
+    @media (max-width: 800px) {
       @content;
     }
   } @else if $breakpoint == "desktop" {
-    @media (min-width: 1100px) {
+    @media (max-width: 1100px) {
       @content;
     }
   }
