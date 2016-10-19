@@ -7,6 +7,7 @@ var htmltidy = require('gulp-htmltidy'); // https://www.npmjs.com/package/gulp-h
 var browserSync = require('browser-sync').create();
 var bourbon = require('node-bourbon'); //https://www.npmjs.com/package/node-bourbon
 var replace = require('gulp-replace'); //https://www.npmjs.com/package/gulp-replace
+var stripCssComments = require('gulp-strip-css-comments'); //https://www.npmjs.com/package/gulp-strip-css-comments
 
 gulp.task('server', function() {
     browserSync.init({
@@ -39,6 +40,7 @@ gulp.task('sass', function () {
         })).on('error', sass.logError)
     .pipe(autoprefixer('last 2 versions'))
     //.pipe(replace('../dest-gfx/', '/filarkiv/grafikk/'))
+    .pipe(stripCssComments())
     .pipe(gulp.dest('dest-css'))
     .pipe(browserSync.stream());
 });
