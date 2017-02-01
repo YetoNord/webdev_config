@@ -1,3 +1,5 @@
-
-/* Alert */
-console.log("JS fil er med")
+$(document).ready(function(){
+    $(".fane-knapp").click(function(){
+        alert("ok");
+    });
+});
