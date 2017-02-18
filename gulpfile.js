@@ -38,7 +38,7 @@ gulp.task('sass', function () {
           style: 'compressed',
           quiet: true
         })).on('error', sass.logError)
-    .pipe(autoprefixer('last 2 versions'))
+    .pipe(autoprefixer())
     //.pipe(replace('../dest-gfx/', '/filarkiv/grafikk/'))
     .pipe(stripCssComments())
     .pipe(gulp.dest('dest-css'))
